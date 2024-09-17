@@ -68,7 +68,7 @@ const templates = {
   </div>
   `,
   footer: `
-    <div class="${footerPrefix}">
+    <div class="${footerPrefix} id="contact">
     </div>
   `,
   empty: `

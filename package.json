@@ -1,5 +1,5 @@
 {
-  "name": "urdf-documentation",
+  "name": "lever",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -23,6 +23,8 @@
     "@docusaurus/plugin-pwa": "^3.4.0",
     "@docusaurus/preset-classic": "3.4.0",
     "@docusaurus/theme-mermaid": "^3.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@mdx-js/react": "^3.0.0",
     "autocomplete.js": "^0.38.1",
     "autoprefixer": "^10.4.19",

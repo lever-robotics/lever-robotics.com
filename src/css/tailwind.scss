@@ -79,7 +79,7 @@
   }
 
   &__search-input {
-	@apply bg-neutral-600/50 focus-visible:outline-primary-500 focus-visible:outline-2 focus-visible:outline #{!important}
+  @apply hidden bg-neutral-600/50 focus-visible:outline-primary-500 focus-visible:outline-2 focus-visible:outline #{!important};
   }
 }
 

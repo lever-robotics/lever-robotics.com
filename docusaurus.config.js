@@ -8,20 +8,20 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'RoboEverything',
-  tagline: 'Build Robots Fast in ROS2',
+  title: 'Lever',
+  tagline: 'Robot Simulation Setup',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  url: 'https://roboeverything.com',
+  url: 'https://lever-robotics.com',
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'marksoulier', // Usually your GitHub org/user name.
-  projectName: 'urdf_documentation', // Usually your repo name.
+  projectName: 'lever', // Usually your repo name.
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
@@ -123,72 +123,68 @@ const config = {
       image: 'img/RoboEverything.png',
       metadata: [{ name: 'description', content: 'URDF Creator Documentation' }],
       navbar: {
-        title: 'RoboEverything',
+        title: 'lever',
         logo: {
           alt: 'Logo',
           src: 'img/robot_arm2.svg',
           srcDark: 'img/robot_arm2_white.svg',
         },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Docs',
-          },
-          {
-            to: '/download', // This path should match the path where your React component is rendered
-            label: 'Download',
-            position: 'left',
-          },
-          {
-            to: '/developer', // This path should match the path where your React component is rendered
-            label: 'Developer',
-            position: 'left',
-          },
+          {to: '/#about', label: 'About', position: 'right'},
+          {to: '/#contact', label: 'Contact', position: 'right'},
+          {to: '/#quote', label: 'Quote', position: 'right'},
         ],
       },
       colorMode: {
-        defaultMode: 'dark', // Set the default mode to 'dark'
-        disableSwitch: false, // Optional: if you want to disable the switch
+        defaultMode: 'light', // Set the default mode to 'dark'
+        disableSwitch: true, // Optional: if you want to disable the switch
         respectPrefersColorScheme: false, // Set this to false to ignore the user's system preference
       },
       footer: {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Email',
             items: [
               {
-                label: 'Quick Start',
-                to: '/docs/quick-start',
+                label: 'sales@lever-robotics.com',
+                to: '/#contact',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Phone Number',
             items: [
               {
-                label: 'Discord',
-                href: 'https://discord.gg/F42V44qxwR',
-              },
-              {
-                label: 'GitHub Discussions',
-                href: 'https://github.com/marksoulier/urdf_documentation/issues',
+                label: '+1 (970) 988 0453',
+                to: '/#contact',
               },
             ],
           },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/marksoulier/URDF_Creator',
-              },
-            ],
-          },
+          // {
+          //   title: 'Community',
+          //   items: [
+          //     {
+          //       label: 'Discord',
+          //       href: 'https://discord.gg/F42V44qxwR',
+          //     },
+          //     {
+          //       label: 'GitHub Discussions',
+          //       href: 'https://github.com/marksoulier/urdf_documentation/issues',
+          //     },
+          //   ],
+          // },
+          // {
+          //   title: 'More',
+          //   items: [
+          //     {
+          //       label: 'GitHub',
+          //       href: 'https://github.com/marksoulier/URDF_Creator',
+          //     },
+          //   ],
+          // },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Inc. Built with Docusaurus.`,
+        copyright: ` `,
       },
       prism: {
         theme: prismThemes.github,

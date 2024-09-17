@@ -1,0 +1,19 @@
+/* InspirationalQuote.module.css */
+.quoteContainer {
+    width: 100%; /* Full width of the screen */
+    text-align: center; /* Center the quote */
+    padding: 20px 0; /* Optional padding */
+  }
+  
+  .quoteText {
+    font-size: 3.0rem; /* Adjust size as needed */
+    font-weight: bold; /* Make the text bold */
+    color: #333; /* Text color */
+    margin: 0;
+  }
+  
+  @media (max-width: 700px) {
+    .quoteText {
+      font-size: 1.5rem; /* Adjust size as needed */
+    }
+  }

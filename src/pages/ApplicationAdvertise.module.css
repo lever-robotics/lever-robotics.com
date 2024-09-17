@@ -12,6 +12,10 @@
     .advertiseContainer {
         flex-direction: column;
     }
+    .pageBreakLine {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
 }
 
 /* Page-breaking line at the top */
@@ -20,7 +24,7 @@
     height: 2px;
     background-color: #646cff;
     border: none;
-    margin-bottom: 10rem; /* Space between the line and the content */
+    margin-bottom: 4rem; /* Space between the line and the content */
     margin-top: 4rem; /* Space between the line and the content */
     align-self: center; /* Center the line within the container */
   }
