@@ -152,15 +152,15 @@ const config = {
               },
             ],
           },
-          {
-            title: 'Phone Number',
-            items: [
-              {
-                label: '+1 (970) 988 0453',
-                to: '/#contact',
-              },
-            ],
-          },
+          // {
+          //   title: 'Phone Number',
+          //   items: [
+          //     {
+          //       label: '+1 (970) 988 0453',
+          //       to: '/#contact',
+          //     },
+          //   ],
+          // },
           // {
           //   title: 'Community',
           //   items: [

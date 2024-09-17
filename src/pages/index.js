@@ -176,7 +176,7 @@ const SurveySection = () => {
       <form className={SurveyStyles.form} onSubmit={handleSubmit}>
         <div className={SurveyStyles.header}>
           <h2>Request a Simulation Setup</h2>
-          <p className={SurveyStyles.subtitle}>See how much time your research and development could save with <br/><span className="robo-gradient"> lever </span>
+          <p className={SurveyStyles.subtitle}>See the time your R&D could save with <br/><span className="robo-gradient" style={}> lever </span>
           </p>
         </div>
         <div className={SurveyStyles.inputGroup}>
@@ -225,16 +225,15 @@ const RobotDefinitions = () => {
       </div>
       <div className={Robotstyles.listContainer}>
         <ul className={Robotstyles.list}>
-            <li><FontAwesomeIcon icon={faCar} className={Robotstyles.icon} /> Mobile Robots</li>
+            <li><FontAwesomeIcon icon={faCar} className={Robotstyles.icon} /> Mobile</li>
             <li><FontAwesomeIcon icon={faRobot} className={Robotstyles.icon} /> Humanoids</li>
             <li><FontAwesomeIcon icon={faDog} className={Robotstyles.icon} /> Quadrupeds</li>
-            <li><FontAwesomeIcon icon={faCog} className={Robotstyles.icon} /> Articulated Robots</li>
+            <li><FontAwesomeIcon icon={faCog} className={Robotstyles.icon} /> Articulated</li>
           </ul>
           <ul className={Robotstyles.list}>
             <li><FontAwesomeIcon icon={faRocket} className={Robotstyles.icon} /> Multi-Rotor Drone</li>
             <li><FontAwesomeIcon icon={faPlane} className={Robotstyles.icon} /> Fixed Wing Drone</li>
-            <li><FontAwesomeIcon icon={faSpider} className={Robotstyles.icon} /> Multi-Legged Robots</li>
-            <li><FontAwesomeIcon icon={faFlask} className={Robotstyles.icon} /> Other Articulating Physics Experiments</li>
+            <li><FontAwesomeIcon icon={faSpider} className={Robotstyles.icon} /> Multi-Legged</li>
           </ul>
       </div>
     </div>
@@ -253,9 +252,9 @@ const ServicesSection = () => {
           </div>
           <ul className={ServicesStyles.bulletedList}>
             <li>CAD model of the robot or schematic/datasheet</li>
-            <li>Desired sensors and sensor schematics</li>
-            <li>Desired environment and simulator</li>
-            <li>Any configuration desires for the ROS2 architecture</li>
+            <li>Sensors and sensor schematics</li>
+            <li>Specified environment and simulator</li>
+            <li>Any configuration needs for the ROS2 architecture</li>
           </ul>
         </div>
       </div>
@@ -269,10 +268,9 @@ const ServicesSection = () => {
               <img src="/img/issac_simulation.png" alt="The Simulation We Deliver to You" className={ServicesStyles.image} />
             </div>
             <ul className={ServicesStyles.bulletedList}>
-              <li>A fully set-up simulation of your environment with your robot model</li>
-              <li>Your specified controls and sensor integration in the simulation</li>
-              <li>Detailed documentation and installation instructions for ROS2 packages</li>
-              <li>Launch files for starting the simulation, as well as launch files for your real robot's base transformation system</li>
+              <li>A fully set-up simulation environment with your robot model</li>
+              <li>Specified controls and sensor integration</li>
+              <li>Launch files to start simulation and your physical robots base transformation tree</li>
             </ul>
           </div>
         </div>
@@ -284,9 +282,9 @@ const ServicesSection = () => {
               <img src="/img/ros2_graph.png" alt="The ROS2 Architecture We Deliver to You" className={ServicesStyles.image} />
             </div>
             <ul className={ServicesStyles.bulletedList}>
-              <li>Comprehensive setup of ROS2 packages</li>
-              <li>Custom configurations based on your specified requirements</li>
-              <li>Documentation to help you scale and maintain your ROS2 architecture</li>
+              <li>Detailed documentation and installation instructions for ROS2 packages</li>
+              <li>Node configuration based on specifications</li>
+              <li>Template package to jump start development</li>
             </ul>
           </div>
         </div>
