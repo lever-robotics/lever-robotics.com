@@ -37,6 +37,8 @@
   object-fit: cover; /* Ensures the image covers the container */
   object-position: top; /* Crops the top of the image */
   border-radius: 30px; /* Rounded corners */
+  border-width: 1px;
+  margin-bottom: 30px;
 }
 
 .header {
@@ -53,8 +55,8 @@
   list-style-type: disc;
   padding-left: 0;
   margin: 20px;
-  margin-top: 50px;
-  padding: 50px;
+  margin-top: 0px;
+  padding: 10px;
 }
 
 .bulletedList li {

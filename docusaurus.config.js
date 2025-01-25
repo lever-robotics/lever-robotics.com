@@ -126,11 +126,10 @@ const config = {
         title: 'lever',
         logo: {
           alt: 'Logo',
-          src: 'img/robot_arm2.svg',
+          src: 'img/lever_robot.svg',
           srcDark: 'img/robot_arm2_white.svg',
         },
         items: [
-          {to: '/#about', label: 'About', position: 'right'},
           {to: '/#contact', label: 'Contact', position: 'right'},
           {to: '/#quote', label: 'Quote', position: 'right'},
         ],
@@ -147,20 +146,20 @@ const config = {
             title: 'Email',
             items: [
               {
-                label: 'sales@lever-robotics.com',
+                label: 'mark@lever-robotics.com',
                 to: '/#contact',
               },
             ],
           },
-          // {
-          //   title: 'Phone Number',
-          //   items: [
-          //     {
-          //       label: '+1 (970) 988 0453',
-          //       to: '/#contact',
-          //     },
-          //   ],
-          // },
+          {
+            title: 'Robot Graphic',
+            items: [
+              {
+                label: 'Legged Robot Image Designed by FreePik',
+                to: 'https://www.freepik.com',
+              },
+            ],
+          },
           // {
           //   title: 'Community',
           //   items: [

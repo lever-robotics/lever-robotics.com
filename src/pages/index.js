@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faRobot, faDog, faCog, faRocket, faPlane, faSpider, faFlask } from '@fortawesome/free-solid-svg-icons';
 
+import emailjs from 'emailjs-com';
 import Heading from '@theme/Heading';
 // import styles from './index.module.css';
 import styles from './ApplicationAdvertise.module.css'; // Import the CSS module
@@ -17,6 +18,7 @@ import SurveyStyles from './SurveyStyles.module.css';
 import Robotstyles from './RobotDefinitions.module.css';
 import ServicesStyles from './ServicesStyles.module.css'; // Corrected import for styles
 import Insstyles from './InspirationalQuote.module.css'; // Import the CSS module
+import './Spinner.css'; // Import the CSS file for spinner styling
 import './header.css'; // Link to your custom CSS
 
 function HomepageHeader() {
@@ -27,7 +29,7 @@ function HomepageHeader() {
         <div className="left-section">
         <div className="title-container">
           <h1 className="title">
-          Use<span className="robo-gradient"> lever </span>to setup your next simulation
+          Concept to simulation <span className="robo-gradient" style={{ fontStyle: 'italic', paddingRight: '6px'}}> {"redesigned"}</span>
           </h1>
         </div>
           <p className="subtitle text-lightModeBlack dark:text-white">
@@ -52,7 +54,7 @@ function HomepageHeader() {
         </div>
         <div className="right-section">
           <img
-            src="img/robot_transparent.png"
+            src="img/spot_robot.png"
             alt="App Preview"
             className="image-transform" 
           />
@@ -120,10 +122,7 @@ const stepsWithoutLever = [
   { text: 'Spend hours manually designing a URDF, trying to represent joints, sensors, and links accurately.', emoji: '😓' },
   { text: 'Face URDF formatting issues, simulation errors, or compatibility problems with platforms like Gazebo.', emoji: '🔧' },
   { text: 'Manually configure the simulation environment, setting up physics properties, collision, and visual aspects.', emoji: '🛠️' },
-  { text: 'Struggle with debugging problems due to missing or unclear documentation.', emoji: '📖' },
   { text: 'Manually write ROS2 nodes to handle control and transformation trees, often leading to errors.', emoji: '🤯' },
-  { text: 'After painstakingly making your model highly accurate, realize it’s too computationally intensive for real-time physics engines.', emoji: '🖥️' },
-  { text: 'Spend additional time tweaking the model to make it more computationally friendly, while still trying to maintain accurate representation.', emoji: '⚖️' },
   { text: 'Manually set up sensor inputs and ensure message flow across the ROS network is correct.', emoji: '💻' },
   { text: 'Test the simulation, encountering multiple setup issues, often requiring manual tweaks and reruns.', emoji: '😵' },
   { text: 'Realize the need for further adjustments and reconfigurations to make the system functional and scalable.', emoji: '⚠️' }
@@ -157,71 +156,123 @@ function ComparisonComponent() {
   );
 };
 
+const Spinner = () => {
+  return (
+    <div className="spinner"></div>
+  );
+};
 
 const SurveySection = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [description, setDescription] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // State to track loading
+  const [success, setSuccess] = useState(false); // State to track success
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Description:', description);
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    setError('');
+    setLoading(true); // Start loading after form submission
+
+    // Send email to yourself (internal notification)
+    emailjs
+      .sendForm(
+        'service_xi58qpk', // Replace with your EmailJS service ID
+        'template_0qdtk3f', // Replace with your internal notification template ID
+        e.target,
+        'TrAW6-R-IGHMVtP7Z' // Replace with your EmailJS user ID
+      )
+      .then(
+        (result) => {
+          console.log('Email sent:', result.text);
+          setLoading(false); // Stop loading
+          setSuccess(true); // Set success to true
+        },
+        (error) => {
+          console.error('Failed to send email:', error.text);
+          setLoading(false); // Stop loading
+          alert('There was an error submitting the form.');
+        }
+      );
   };
 
   return (
-    <div className={SurveyStyles.container} id="quote">
-      <form className={SurveyStyles.form} onSubmit={handleSubmit}>
-        <div className={SurveyStyles.header}>
-          <h2>Request a Simulation Setup</h2>
-          <p className={SurveyStyles.subtitle}>See the time your R&D could save with <br/><span className="robo-gradient" style={}> lever </span>
-          </p>
+    <div className={SurveyStyles.container}>
+      {loading ? (
+        <Spinner />
+      ) : success ? (
+        <div className={SurveyStyles.successMessage}>
+          <p>Your request has been submitted successfully. We will get back to you soon.</p>
         </div>
-        <div className={SurveyStyles.inputGroup}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name"
-            required
-          />
-        </div>
-        <div className={SurveyStyles.inputGroup}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-        <div className={SurveyStyles.inputGroup}>
-          <label htmlFor="description">Project Description</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Describe your project"
-            required
-          ></textarea>
-        </div>
-        <button type="submit" className={SurveyStyles.submitButton}>Request Quote</button>
-      </form>
+      ) : (
+        <form className={SurveyStyles.form} onSubmit={handleSubmit}>
+          <div className={SurveyStyles.header}>
+            <h2>Request a Simulation Setup</h2>
+            <p className={SurveyStyles.subtitle}>
+              See the time your R&D could save with <br />
+              <span className="robo-gradient large-font">lever</span>
+            </p>
+          </div>
+          <div className={SurveyStyles.inputGroup}>
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name" // Add name attribute for EmailJS
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div className={SurveyStyles.inputGroup}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email" // Add name attribute for EmailJS
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div className={SurveyStyles.inputGroup}>
+            <label htmlFor="description">Project Description</label>
+            <textarea
+              id="description"
+              name="description" // Add name attribute for EmailJS
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Describe your project"
+              required
+            ></textarea>
+          </div>
+          {error && <p className={SurveyStyles.errorMessage}>{error}</p>}
+          <button type="submit" className={SurveyStyles.submitButton}>
+            Request Quote
+          </button>
+        </form>
+      )}
     </div>
   );
 };
+
 
 const RobotDefinitions = () => {
   return (
     <div className={Robotstyles.container} id="about">
       <div className={Robotstyles.headerContainer}>
-        <h2 className={Robotstyles.header}>What Type of Robot Custom Definitions We Can Make for Simulation</h2>
+        <h2 className={Robotstyles.header}>Robots We Define</h2>
       </div>
       <div className={Robotstyles.listContainer}>
         <ul className={Robotstyles.list}>
@@ -234,6 +285,7 @@ const RobotDefinitions = () => {
             <li><FontAwesomeIcon icon={faRocket} className={Robotstyles.icon} /> Multi-Rotor Drone</li>
             <li><FontAwesomeIcon icon={faPlane} className={Robotstyles.icon} /> Fixed Wing Drone</li>
             <li><FontAwesomeIcon icon={faSpider} className={Robotstyles.icon} /> Multi-Legged</li>
+            <li><FontAwesomeIcon icon={faFlask} className={Robotstyles.icon} /> Custom</li>
           </ul>
       </div>
     </div>
@@ -247,9 +299,9 @@ const ServicesSection = () => {
       <div className={ServicesStyles.topSection}>
         <div className={ServicesStyles.content}>
           <h2 className={ServicesStyles.header}>You Give Us</h2>
-          <div className={ServicesStyles.imageContainer}>
+          {/* <div className={ServicesStyles.imageContainer}>
             <img src="/img/solidworks_env.jpg" alt="What You Give Us" className={ServicesStyles.image} />
-          </div>
+          </div> */}
           <ul className={ServicesStyles.bulletedList}>
             <li>CAD model of the robot or schematic/datasheet</li>
             <li>Sensors and sensor schematics</li>
@@ -265,7 +317,7 @@ const ServicesSection = () => {
           <div className={ServicesStyles.content}>
             <h2 className={ServicesStyles.header}>The <span className="robo-gradient">Simulation</span> We Deliver</h2>
             <div className={ServicesStyles.imageContainer}>
-              <img src="/img/issac_simulation.png" alt="The Simulation We Deliver to You" className={ServicesStyles.image} />
+              <img src="/img/blender_rendering.png" alt="The Simulation We Deliver to You" className={`${ServicesStyles.image} brightImage`} />
             </div>
             <ul className={ServicesStyles.bulletedList}>
               <li>A fully set-up simulation environment with your robot model</li>
@@ -279,11 +331,12 @@ const ServicesSection = () => {
           <div className={ServicesStyles.content}>
             <h2 className={ServicesStyles.header}>The <span className="robo-gradient">ROS2 Architecture</span> We Deliver</h2>
             <div className={ServicesStyles.imageContainer}>
-              <img src="/img/ros2_graph.png" alt="The ROS2 Architecture We Deliver to You" className={ServicesStyles.image} />
+              <img src="/img/ros2_graph_mini.png" alt="The ROS2 Architecture We Deliver to You" className={ServicesStyles.image} />
             </div>
             <ul className={ServicesStyles.bulletedList}>
               <li>Detailed documentation and installation instructions for ROS2 packages</li>
               <li>Node configuration based on specifications</li>
+              <li>Launch files for sensor nodes, transformation tree and ros2 controls</li>
               <li>Template package to jump start development</li>
             </ul>
           </div>
@@ -346,7 +399,7 @@ export default function Home() {
       <RobotDefinitions />
       <hr className={styles.pageBreakLine} />
       <ServicesSection />
-      <hr className={styles.pageBreakLine} />
+      <hr className={styles.pageBreakLine} id="quote"/>
       <SurveySection />
       <div id="contact"></div>
     </Layout>

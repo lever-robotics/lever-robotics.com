@@ -11,6 +11,7 @@
     background: linear-gradient(90deg, #c47cff, #646cff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  text-shadow: none;
   }
 
   /* Left section for title and subtitle */
@@ -22,10 +23,11 @@
   
   .title {
     font-size: 5vw; /* Adjust font size based on viewport width */
-    margin: 20px; /* Add padding to the title */
+    margin: 60px; /* Add padding to the title */
     font-weight: bold;
     text-align: center;
-    color: #2d3748; /* Equivalent to Tailwind's text-gray-800 */
+    /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); Horizontal offset, vertical offset, blur radius, shadow color */
+    color: #00000034; /* Equivalent to Tailwind's text-gray-800 */
   }
   
   .subtitle {
@@ -38,19 +40,18 @@
   /* Right section for image */
 /* Right section for image */
 .right-section {
-    width: 30%; /* Adjust width to 50% */
-    overflow: hidden; /* Hide overflowing content */
-    position: relative;
-    padding-top: 50px;
+  width: 30%; /* Adjust width as needed */
+  overflow: hidden; /* Allow overflow to see the larger image */
+  position: relative;
+  padding: 100px;
+  height: 400px;
 }
 
-
-  
-  /* Image styling with transformation */
-  .image-transform {
-    width: 90%; /* Adjust width as needed */
-    transform: translateX(20%) translateY(0%); /* Move image partly off-screen */
-  }
+/* Image styling with transformation */
+.image-transform {
+  width: 800px; /* Increase width to make the image larger */
+  transform: scale(2.5) translateX(20%) translateY(-10%); /* Scale image and adjust position */
+}
 
   .title-container {
     position: relative;
@@ -157,6 +158,13 @@
 .right-button:hover {
   background-color: black;
   color: white;
+}
+.large-font {
+  font-size: 2em; /* Adjust the size as needed */
+}
+
+.brightImage {
+  filter: brightness(2.5); /* Increase brightness by 50% */
 }
 
 @media (max-width: 700px) {
